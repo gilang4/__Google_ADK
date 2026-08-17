@@ -1,0 +1,9 @@
+┌─────────────────────┐         HTTP Request          ┌─────────────────────┐
+│   GOOGLE ADK AGENT  │ ────────────────────────────→  │   DOCKER CONTAINER  │
+│   (Port 800)        │ ←────────────────────────────  │   (Port 8000)       │
+│                     │         JSON Response           │                     │
+│   Gemini Brain      │                                │   FHIR Explorer     │
+│   + Tools           │                                │   Ollama Summarizer │
+│                     │                                │   Azure Summarizer  │
+│                     │                                │   Imaging API       │
+└─────────────────────┘                                └─────────────────────┘

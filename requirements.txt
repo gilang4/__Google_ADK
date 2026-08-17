@@ -1,0 +1,14 @@
+# requirements.txt
+# Google ADK and Gemini
+google-adk>=0.1.0
+google-generativeai>=0.8.0
+
+# Environment management
+python-dotenv>=1.0.0
+
+# Jupyter support (if running notebooks)
+ipykernel>=6.0.0
+nest-asyncio>=1.6.0
+
+# Optional but useful
+requests>=2.31.0

@@ -1,0 +1,54 @@
+┌─────────────────────────────────────────────────────────────────────┐
+│  USER: "Get me a clinical summary for a random patient"             │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  GEMINI AGENT (agent.py)                                            │
+│  "I need to:                                                        │
+│   1. Call fhir_explore_patient() to get patient data                │
+│   2. Call summarize_with_azure() to get AI summary"                 │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  AGENT EXECUTES TOOL: fhir_explore_patient()                        │
+│  (This is a Python function in docker_api_tools.py)                 │
+│                                                                     │
+│  import requests                                                    │
+│  response = requests.post(                                          │
+│      "http://localhost:8000/api/fhir/explore"  ◄── CALLS DOCKER!   │
+│  )                                                                  │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼  HTTP POST to localhost:8000
+┌─────────────────────────────────────────────────────────────────────┐
+│  DOCKER CONTAINER (FastAPI on port 8000)                            │
+│                                                                     │
+│  @app.post("/api/fhir/explore")                                     │
+│  def fhir_explore():                                                │
+│      data = explore_patient()  ◄── Your refactored tool runs       │
+│      return JSONResponse(data)                                      │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼  Returns JSON
+┌─────────────────────────────────────────────────────────────────────┐
+│  BACK IN THE PYTHON FUNCTION:                                       │
+│                                                                     │
+│  data = response.json()  ◄── Parses the JSON                       │
+│  return {"success": True, "patient_data": data["data"]}             │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  GEMINI AGENT RECEIVES RESULT                                       │
+│  "I have patient data. Now I'll call summarize_with_azure()"        │
+│  (Repeats the same pattern → calls Docker /api/summarize/azure)     │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  USER SEES:                                                         │
+│  "Here's the clinical summary for patient ID 616eaeb2:              │
+│   The patient has a history of obesity and viral sinusitis..."      │
+└─────────────────────────────────────────────────────────────────────┘

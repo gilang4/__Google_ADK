@@ -1,0 +1,13 @@
+test_agent_docker.py          Docker Container              FHIR Server
+      │                            │                            │
+      │──POST /api/fhir/explore──→│                            │
+      │                            │──GET /Patient─────────────→│
+      │                            │←──Patient JSON─────────────│
+      │←──Patient data─────────────│                            │
+      │                            │                            │
+      │──POST /api/summarize/azure→│                            │
+      │                            │──Azure GPT API─────────────│
+      │                            │←──AI Summary───────────────│
+      │←──Clinical summary─────────│                            │
+      │                            │                            │
+      ✅ DONE!                     ✅ DONE!                     ✅ DONE!

@@ -1,0 +1,34 @@
+📓 day-2a-Agent_Tools.ipynb
+│
+├── 📦 SECTION 1: Setup (API Key, Imports)
+│   └── Cell 1: Load API Key from .env
+│   └── Cell 2: Imports - ALL ADK Components & verify
+│   └── Cell 3: BuiltInCodeExecutor Helper function
+│   └── Cell 4: Retrying request
+│
+├── 🔧 SECTION 2: Custom Tools (Currency Agent -> Fee from banks + Exchange Rate) 
+│   └── Cell 5:   Fee Lookup Tool
+│   └── Cell 5.1: Get exchange rate
+│   └── Cell 3: 
+│   └── Cell 4: 
+│
+│
+│
+├── 🤖 SECTION 3: Agent WITHOUT Code Execution (Original)
+│   └── Cell 6: currency_agent (original)—Create Currency Agent, agent is configured but not yet running.
+│   └── Cell 7: Quick Test (No Input Required)  - Test with convert_currency()
+│   └── Cell 8: WIDGET VERSION (RELIABLE - NO ASYNC ISSUES!)
+│
+├── 💻 SECTION 9: Agent WITH Code Execution (NEW!)
+│   ├── Cell 9:  # Import BuiltInCodeExecutor
+│   ├── Cell 10: # Create code_executor
+│   ├── Cell 11: currency_agent_with_code (NEW agent)—# Agent WITH Code Generation (4 DECIMAL PRECISION)-generate code itself by LLM
+│   ├── Cell 12: Test with convert_currency_with_code() - # Test Agent WITH Code Generation (Manual Execution)
+│   └── Cell 13: Compare results side-by-side
+│
+├── 🎨 SECTION 5: Interactive UI (Widgets)
+│   └── Cell 14: Widget for Original Agent
+│   └── Cell 15: Widget for Code Execution Agent
+│
+└── 📊 SECTION 6: Comparison & Analysis
+    └── Cell 16: Show differences
