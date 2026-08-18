@@ -20,3 +20,5 @@ This project explores the core concept of **AI Agents** using the Google Agent D
 [Cell 5.2] Display clickable UI link
    ↓
 [Cell 5.3] Launch ADK Web Server → [LIVE CHAT UI]
+
+DAY 2 IS NOW FINISHED, AND SHOULD BE UP HERE SHORTLY.
